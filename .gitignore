@@ -1,0 +1,3 @@
+/.venv
+/generatedFiles/base/*.yaml
+/generatedFiles/full/*.yaml
