@@ -1,4 +1,4 @@
-# Deployment-Architecture-Generator
+# Deployment Architecture Generator
 A configurable generator for deployment architectures.
 
 
