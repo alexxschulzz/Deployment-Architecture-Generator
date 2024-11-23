@@ -41,7 +41,7 @@ components:
     variants:
       - name: "Redis"
         allowed_hosts:
-          - "all"
+          - "all OS"
       - name: "Amazon ElastiCache Instance"
         allowed_hosts:
           - "Amazon ElastiCache"
@@ -165,7 +165,7 @@ components:
     variants:
       - name: "MinIO"
         allowed_hosts:
-          - "all"
+          - "all OS"
       - name: "Amazon S3 Instance"
         allowed_hosts:
           - "Amazon S3"
@@ -208,3 +208,5 @@ components:
       - name: "Amazon Elastic Beanstalk"
       - name: "Azure App Service"
       - name: "Google App Engine"
+      - name: "Kubernetes"
+      - name: "Docker Engine"

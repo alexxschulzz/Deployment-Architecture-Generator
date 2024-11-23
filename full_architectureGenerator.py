@@ -27,6 +27,9 @@ def is_combination_valid(source_component, target_component, component_config):
     valid = False
     if target_component in allowed_hosts:
         valid = True
+    if allowed_hosts[0] == "all OS":
+        if target_component in get_variants('OS', component_config):
+            valid = True
     elif allowed_hosts[0] == "all":
         valid = True
 
