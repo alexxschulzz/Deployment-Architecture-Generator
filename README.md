@@ -20,4 +20,4 @@ All configuration files are stored in the folder ```Config```. The generator is 
 
 - To add new stacks, change: ```stackConfig.yaml```.
 - To add new stack combinations, change: ```stackCombinationConfig.yaml```. Currently any stack combination must be defined manually. A generator to create new stack combinations could replace this file.
-- To add new components, change: ```componentConfig.yaml```.
+- To add new components, change: ```componentConfig.yaml```. Keep in mind that when you add new components, you must also add them to the respective ```.allowed_hosts```. of other components.

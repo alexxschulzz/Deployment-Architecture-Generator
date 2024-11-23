@@ -10,12 +10,16 @@ components:
           - "Amazon Elastic Beanstalk"
           - "Azure App Service"
           - "Google App Engine"
+          - "Kubernetes"
+          - "Docker Engine"
       - name: "JavaScript"
         allowed_hosts:
           - "Node.js"
           - "Amazon Elastic Beanstalk"
           - "Azure App Service"
           - "Google App Engine"
+          - "Kubernetes"
+          - "Docker Engine"
       - name: "Python"
         allowed_hosts:
           - "Apache HTTP Server"
@@ -23,12 +27,16 @@ components:
           - "Amazon Elastic Beanstalk"
           - "Azure App Service"
           - "Google App Engine"
+          - "Kubernetes"
+          - "Docker Engine"
       - name: "C#"
         allowed_hosts:
           - "IIS"
           - "Amazon Elastic Beanstalk"
           - "Azure App Service"
           - "Google App Engine"
+          - "Kubernetes"
+          - "Docker Engine"
       - name: "Go"
         allowed_hosts:
           - "NGINX"
@@ -36,12 +44,15 @@ components:
           - "Amazon Elastic Beanstalk"
           - "Azure App Service"
           - "Google App Engine"
+          - "Kubernetes"
+          - "Docker Engine"
 
   - name: "Cache"
     variants:
       - name: "Redis"
         allowed_hosts:
-          - "all OS"
+          - "Ubuntu"
+          - "CentOS"
       - name: "Amazon ElastiCache Instance"
         allowed_hosts:
           - "Amazon ElastiCache"
@@ -147,19 +158,20 @@ components:
           - "Amazon MQ"
           - "Azure Service Bus"
           - "Google Cloud Pub/Sub"
-      # - name: "Topic"
-      #   allowed_hosts:
-      #     - "RabbitMQ"
-      #     - "Mosquitto"
-      #     - "Amazon MQ"
-      #     - "Azure Service Bus"
-      #     - "Google Cloud Pub/Sub"
+      - name: "Topic"
+        allowed_hosts:
+          - "RabbitMQ"
+          - "Mosquitto"
+          - "Amazon MQ"
+          - "Azure Service Bus"
+          - "Google Cloud Pub/Sub"
 
   - name: "Storage"
     variants:
       - name: "MinIO"
         allowed_hosts:
-          - "all OS"
+          - "Ubuntu"
+          - "CentOS"
       - name: "Amazon S3 Instance"
         allowed_hosts:
           - "Amazon S3"

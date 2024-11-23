@@ -27,9 +27,9 @@ def is_combination_valid(source_component, target_component, component_config):
     valid = False
     if target_component in allowed_hosts:
         valid = True
-    if allowed_hosts[0] == "all OS":
-        if target_component in get_variants('OS', component_config):
-            valid = True
+    # elif allowed_hosts[0] == "all OS":
+    #     if target_component in get_variants('OS', component_config):
+    #         valid = True
     elif allowed_hosts[0] == "all":
         valid = True
 
@@ -75,7 +75,7 @@ def all_components_from_same_provider(combination):
 
     num_valid_providers = sum(1 for count in counts.values() if count > 0)
 
-    return num_valid_providers == 1
+    return num_valid_providers <= 1
 
 def generate_full_architectures(component_combinations, base_architectures_path, full_architecture_path):
 
