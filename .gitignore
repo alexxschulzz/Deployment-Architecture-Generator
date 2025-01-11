@@ -1,3 +1,4 @@
 /.venv
 /generatedFiles/base/*.yaml
 /generatedFiles/full/*.yaml
+/generatedFiles/full_random_selection/*.yaml

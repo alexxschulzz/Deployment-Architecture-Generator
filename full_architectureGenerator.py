@@ -4,7 +4,7 @@ import os
 from itertools import product
 import shutil
 
-# architectrue file directories
+# architecture file directories
 base_architectures_path = "Files/File_Generator/generatedFiles/base"
 full_architecture_path = "Files/File_Generator/generatedFiles/full"
 

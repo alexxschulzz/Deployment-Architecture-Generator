@@ -6,7 +6,7 @@ import re
 import uuid
 import shutil
 
-# architectrue file directory
+# architecture file directory
 base_architectures_path = 'Files/File_Generator/generatedFiles/base'
 
 # config files
