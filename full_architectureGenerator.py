@@ -1,6 +1,17 @@
+# oyaml is an extensions of the yaml lib = ordered yaml, ensures that the order of the e.g. dict in python is preserved in the created yaml file
 import oyaml as yaml
 import os
 from itertools import product
+import shutil
+
+# architectrue file directories
+base_architectures_path = "Files/File_Generator/generatedFiles/base"
+full_architecture_path = "Files/File_Generator/generatedFiles/full"
+
+# config files
+stack_config_path = 'Files/File_Generator/Config/stackConfig.yaml'
+component_config_path = 'Files/File_Generator/Config/componentConfig.yaml'
+    
 
 def load_yaml(file_path):
     with open(file_path, 'r') as file:
@@ -75,7 +86,7 @@ def all_components_from_same_provider(combination):
 
     num_valid_providers = sum(1 for count in counts.values() if count > 0)
 
-    return num_valid_providers <= 1
+    return num_valid_providers == 1
 
 def generate_full_architectures(component_combinations, base_architectures_path, full_architecture_path):
 
@@ -163,10 +174,18 @@ def generate_full_architectures(component_combinations, base_architectures_path,
                     yaml.dump(new_architecture, full_file, default_flow_style=False)
 
 def main():
-    stack_config = load_yaml('Config/stackConfig.yaml')
-    component_config = load_yaml('Config/componentConfig.yaml')
-    base_architectures_path = 'generatedFiles/base'
-    full_architecture_path = 'generatedFiles/full'
+    stack_config = load_yaml(stack_config_path)
+    component_config = load_yaml(component_config_path)
+
+    # delete files in output_directory/full_architecture_path before new generation
+    if os.path.exists(full_architecture_path):
+        # deleting the entire folder is faster
+        shutil.rmtree(full_architecture_path)
+        print ()
+        print(f"Delete existing files in '{full_architecture_path}' before generating the base architectures...")
+        print()
+        # recreate the folder
+        os.makedirs(full_architecture_path)
 
     component_combinations = generate_component_combinations(stack_config, component_config)
 

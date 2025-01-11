@@ -1,20 +1,26 @@
-#import yaml
 # oyaml is an extensions of the yaml lib = ordered yaml, ensures that the order of the e.g. dict in python is preserved in the created yaml file
 import oyaml as yaml
 from itertools import product
 import os
 import re
 import uuid
+import shutil
+
+# architectrue file directory
+base_architectures_path = 'Files/File_Generator/generatedFiles/base'
+
+# config files
+stack_config_path = 'Files/File_Generator/Config/stackConfig.yaml'
+combination_config_path = 'Files/File_Generator/Config/stackCombinationConfig.yaml'
 
 def load_yaml(file_path):
     with open(file_path, 'r') as file:
         return yaml.safe_load(file)
 
 def save_basestack_architecture(architecture, architecture_counter):
-    output_directory = 'generatedFiles/base'
-    os.makedirs(output_directory, exist_ok=True)
+    os.makedirs(base_architectures_path, exist_ok=True)
 
-    output_file_path = os.path.join(output_directory, f'CloudArchitecture{architecture_counter}.yaml')
+    output_file_path = os.path.join(base_architectures_path, f'CloudArchitecture{architecture_counter}.yaml')
 
     # avoids, that yaml dumper is using aliases/referencing in the created yaml file but instead creates an own structure for e.g. WebApp and WebApp-2
     yaml.Dumper.ignore_aliases = lambda *args : True
@@ -143,8 +149,18 @@ def generate_stack_combinations(stack_config, combination_config):
             architecture_counter += 1
 
 def main():
-    stack_config = load_yaml('Config/stackConfig.yaml')
-    combination_config = load_yaml('Config/stackCombinationConfig.yaml')
+    stack_config = load_yaml(stack_config_path)
+    combination_config = load_yaml(combination_config_path)
+
+    # delete files in output_directory/base_architectures_path before new generation
+    if os.path.exists(base_architectures_path):
+        # deleting the entire folder is faster
+        shutil.rmtree(base_architectures_path)
+        print ()
+        print(f"Delete existing files in '{base_architectures_path}' before generating the base architectures...")
+        print()
+        # recreate the folder
+        os.makedirs(base_architectures_path)
 
     generate_stack_combinations(stack_config, combination_config)
 
